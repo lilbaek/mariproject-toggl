@@ -39,7 +39,7 @@
         "electron-log": "3.0.9",
         "electron-updater": "4.2.0",
         "events": "3.0.0",
-        "lodash": "4.17.15",
+        "lodash": "4.17.19",
         "ngx-soap": "0.6.0",
         "sax": "1.2.4",
         "soap": "0.30.0",
