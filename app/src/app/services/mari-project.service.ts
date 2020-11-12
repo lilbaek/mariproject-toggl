@@ -80,8 +80,12 @@ export class MariProjectService {
         return this.client.call('oGetListPositionsOfContractForPlanning', body).toPromise();
     }
 
-    public async createTimeEntry(projectNumber: string, contractId: string, contractPositionId: string, hours: number, date: Date, description: string): Promise<ISoapMethodResponse> {
+    public async createTimeEntry(projectNumber: string, contractId: string, contractPositionId: string, hours: number, date: Date, description: string, setBillable: boolean): Promise<ISoapMethodResponse> {
         const session = await this.login();
+        let hoursBillable = 0;
+        if (setBillable) {
+            hoursBillable = hours;
+        }
         const body = {
             SessionKey: session,
             ImportLine: {
@@ -91,7 +95,7 @@ export class MariProjectService {
                 ContractPositionID: contractPositionId,
                 ContractID: contractId,
                 DayOfService: date.toISOString(),
-                HoursBillable: 0,
+                HoursBillable: hoursBillable,
                 Hours: hours,
                 Activity: description
             }

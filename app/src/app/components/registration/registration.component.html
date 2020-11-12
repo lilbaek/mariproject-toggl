@@ -54,6 +54,7 @@
                     <mat-card-actions>
                         <mat-chip-list>
                             <mat-chip *ngIf="anyChecked" color="primary" selected (click)="importSelectedEntries()">Import selected entries</mat-chip>
+                            <mat-checkbox [(ngModel)]="setBillable" matInput>Set billable</mat-checkbox>
                         </mat-chip-list>
                     </mat-card-actions>
                 </mat-card>

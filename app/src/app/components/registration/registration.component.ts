@@ -14,6 +14,7 @@ export class RegistrationComponent implements OnInit {
     public dataSource: any;
     public displayedColumns: string[] = ['checked', 'project', 'description', 'durationDisplay'];
     public dateSelection: Date = new Date();
+    public setBillable: boolean = false;
 
     constructor(private settingsService: SettingsService, private togglService: TogglService, private mariProjectService: MariProjectService, private snackBar: MatSnackBar, private router: Router) {
     }
@@ -95,7 +96,8 @@ export class RegistrationComponent implements OnInit {
                     entry.positionId,
                     (entry.durationSeconds / 60) / 60,
                     this.dateSelection,
-                    entry.description ? entry.description : ''
+                    entry.description ? entry.description : '',
+                    this.setBillable
                 );
                 console.log(response);
                 if (response.result.MARITimeKeepingImportResult.ErrorText) {
